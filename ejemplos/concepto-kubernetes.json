@@ -1,0 +1,577 @@
+{
+ "titulo": "Kubernetes en AWS (EKS) en 70 segundos",
+ "slug": "kubernetes-eks-70-segundos",
+ "palabra_clave": "kubernetes en aws",
+ "handle": "@carli.code",
+ "ritmo": 2.6,
+ "pausa": 0.5,
+ "escenas": [
+  {
+   "id": "gancho",
+   "type": "cara",
+   "dur": 8,
+   "title": "Kubernetes en ==1 minuto==",
+   "nota": "gancho, mirando a cámara",
+   "cara": true,
+   "pantalla": "Título arriba y el marco de tu cara. Hablas tú a cámara.",
+   "voz": "[CARA] Kubernetes suena complicadísimo, pero te lo explico en un minuto. Y ojo, porque en AWS ya viene casi armado."
+  },
+  {
+   "id": "analogia",
+   "type": "diagram",
+   "dur": 12,
+   "title": "Kubernetes es el ==capitán==",
+   "pill": "timonel, en griego",
+   "items": [
+    {
+     "k": "wave",
+     "y": 900,
+     "color": "violet",
+     "t": 0.2
+    },
+    {
+     "k": "poly",
+     "pts": [
+      [
+       90,
+       640
+      ],
+      [
+       910,
+       640
+      ],
+      [
+       800,
+       830
+      ],
+      [
+       200,
+       830
+      ]
+     ],
+     "color": "violet",
+     "alpha": 0.16,
+     "t": 0.4
+    },
+    {
+     "k": "box",
+     "x": 195,
+     "y": 520,
+     "w": 190,
+     "h": 120,
+     "label": "app",
+     "color": "violet",
+     "icon": "box",
+     "ipx": 40,
+     "lpx": 30,
+     "t": 0.8
+    },
+    {
+     "k": "box",
+     "x": 405,
+     "y": 520,
+     "w": 190,
+     "h": 120,
+     "label": "app",
+     "color": "violet",
+     "icon": "box",
+     "ipx": 40,
+     "lpx": 30,
+     "t": 1.1
+    },
+    {
+     "k": "box",
+     "x": 615,
+     "y": 520,
+     "w": 190,
+     "h": 120,
+     "label": "app",
+     "color": "violet",
+     "icon": "box",
+     "ipx": 40,
+     "lpx": 30,
+     "t": 1.4
+    },
+    {
+     "k": "box",
+     "x": 195,
+     "y": 400,
+     "w": 190,
+     "h": 120,
+     "label": "app",
+     "color": "violet",
+     "icon": "box",
+     "ipx": 40,
+     "lpx": 30,
+     "t": 1.7
+    },
+    {
+     "k": "box",
+     "x": 615,
+     "y": 400,
+     "w": 190,
+     "h": 120,
+     "label": "app",
+     "color": "violet",
+     "icon": "box",
+     "ipx": 40,
+     "lpx": 30,
+     "t": 2.0
+    },
+    {
+     "k": "box",
+     "x": 405,
+     "y": 400,
+     "w": 190,
+     "h": 120,
+     "label": "app",
+     "color": "pink",
+     "icon": "box",
+     "ipx": 40,
+     "lpx": 30,
+     "t": 2.3,
+     "cae": 9.0
+    },
+    {
+     "k": "icon",
+     "name": "ship-wheel",
+     "x": 500,
+     "y": 165,
+     "size": 190,
+     "color": "pink",
+     "t": 2.6
+    },
+    {
+     "k": "text",
+     "x": 500,
+     "y": 335,
+     "s": "KUBERNETES",
+     "size": 58,
+     "poppins": true,
+     "color": "pink",
+     "t": 2.9
+    },
+    {
+     "k": "text",
+     "x": 500,
+     "y": 372,
+     "s": "timonel, en griego",
+     "size": 26,
+     "mono": true,
+     "color": "#8b8b95",
+     "t": 5.6
+    },
+    {
+     "k": "box",
+     "x": 405,
+     "y": 400,
+     "w": 190,
+     "h": 120,
+     "label": "app",
+     "color": "pink",
+     "solid": true,
+     "icon": "box",
+     "ipx": 40,
+     "lpx": 30,
+     "t": 10.6
+    },
+    {
+     "k": "pill",
+     "x": 500,
+     "y": 748,
+     "s": "reemplazo",
+     "size": 34,
+     "rot": -3,
+     "t": 11.0
+    }
+   ],
+   "pantalla": "Un barco con contenedores (cajas). Aparece el timón KUBERNETES; una caja se cae y otra la reemplaza.",
+   "voz": "Imagina tus apps como cajas, los contenedores. Kubernetes es el capitán del barco, su nombre significa timonel en griego. Decide dónde va cada caja y, si una se cae, pone otra."
+  },
+  {
+   "id": "problema",
+   "type": "cara",
+   "dur": 6,
+   "title": "¿Para qué ==sirve==?",
+   "nota": "explicas a cámara",
+   "cara": true,
+   "pantalla": "Título y tu cara.",
+   "voz": "[CARA] Con tres contenedores lo haces a mano. Con trescientos, necesitas quien los coordine."
+  },
+  {
+   "id": "eks",
+   "type": "diagram",
+   "dur": 14,
+   "title": "AWS pone el ==cerebro==",
+   "pill": "EKS administrado",
+   "items": [
+    {
+     "k": "dbox",
+     "x": 40,
+     "y": 10,
+     "w": 920,
+     "h": 345,
+     "color": "violet",
+     "label": "administrado por AWS",
+     "t": 0.3,
+     "center": true
+    },
+    {
+     "k": "box",
+     "x": 240,
+     "y": 85,
+     "w": 520,
+     "h": 230,
+     "label": "CONTROL PLANE",
+     "color": "pink",
+     "solid": true,
+     "icon": "brain",
+     "ipx": 84,
+     "lpx": 44,
+     "sub": "el cerebro del cluster",
+     "t": 1.0
+    },
+    {
+     "k": "dbox",
+     "x": 40,
+     "y": 470,
+     "w": 920,
+     "h": 515,
+     "color": "gray",
+     "label": "tu cuenta de AWS",
+     "t": 4.2,
+     "center": true
+    },
+    {
+     "k": "arrow",
+     "x1": 360,
+     "y1": 335,
+     "x2": 290,
+     "y2": 520,
+     "color": "pink",
+     "dash": true,
+     "t": 4.6
+    },
+    {
+     "k": "arrow",
+     "x1": 640,
+     "y1": 335,
+     "x2": 710,
+     "y2": 520,
+     "color": "pink",
+     "dash": true,
+     "t": 4.8
+    },
+    {
+     "k": "box",
+     "x": 80,
+     "y": 525,
+     "w": 400,
+     "h": 430,
+     "label": "NODO EC2",
+     "color": "violet",
+     "icon": "server",
+     "ipx": 60,
+     "lpx": 38,
+     "sub": "máquina",
+     "top": true,
+     "t": 5.2
+    },
+    {
+     "k": "box",
+     "x": 520,
+     "y": 525,
+     "w": 400,
+     "h": 430,
+     "label": "NODO EC2",
+     "color": "violet",
+     "icon": "server",
+     "ipx": 60,
+     "lpx": 38,
+     "sub": "máquina",
+     "top": true,
+     "t": 5.8
+    },
+    {
+     "k": "box",
+     "x": 140,
+     "y": 735,
+     "w": 120,
+     "h": 90,
+     "label": "pod",
+     "color": "violet",
+     "icon": "box",
+     "ipx": 34,
+     "lpx": 26,
+     "t": 7.4
+    },
+    {
+     "k": "box",
+     "x": 300,
+     "y": 735,
+     "w": 120,
+     "h": 90,
+     "label": "pod",
+     "color": "violet",
+     "icon": "box",
+     "ipx": 34,
+     "lpx": 26,
+     "t": 7.7
+    },
+    {
+     "k": "box",
+     "x": 140,
+     "y": 840,
+     "w": 120,
+     "h": 90,
+     "label": "pod",
+     "color": "violet",
+     "icon": "box",
+     "ipx": 34,
+     "lpx": 26,
+     "t": 8.0
+    },
+    {
+     "k": "box",
+     "x": 300,
+     "y": 840,
+     "w": 120,
+     "h": 90,
+     "label": "pod",
+     "color": "violet",
+     "icon": "box",
+     "ipx": 34,
+     "lpx": 26,
+     "t": 8.3
+    },
+    {
+     "k": "box",
+     "x": 580,
+     "y": 735,
+     "w": 120,
+     "h": 90,
+     "label": "pod",
+     "color": "violet",
+     "icon": "box",
+     "ipx": 34,
+     "lpx": 26,
+     "t": 8.6
+    },
+    {
+     "k": "box",
+     "x": 740,
+     "y": 735,
+     "w": 120,
+     "h": 90,
+     "label": "pod",
+     "color": "violet",
+     "icon": "box",
+     "ipx": 34,
+     "lpx": 26,
+     "t": 8.9
+    },
+    {
+     "k": "box",
+     "x": 580,
+     "y": 840,
+     "w": 120,
+     "h": 90,
+     "label": "pod",
+     "color": "violet",
+     "icon": "box",
+     "ipx": 34,
+     "lpx": 26,
+     "t": 9.2
+    },
+    {
+     "k": "box",
+     "x": 740,
+     "y": 840,
+     "w": 120,
+     "h": 90,
+     "label": "pod",
+     "color": "violet",
+     "icon": "box",
+     "ipx": 34,
+     "lpx": 26,
+     "t": 9.5
+    }
+   ],
+   "pantalla": "Diagrama grande: arriba el CONTROL PLANE (AWS), abajo dos NODOS EC2 con sus pods.",
+   "voz": "En EKS, AWS administra el cerebro, el control plane, y tú no tienes que montarlo ni mantenerlo. Tú pones los nodos, que son máquinas EC2, y dentro de ellos corren tus pods, con tus contenedores."
+  },
+  {
+   "id": "beneficio",
+   "type": "cara",
+   "dur": 6,
+   "title": "Menos ==dolor== de cabeza",
+   "nota": "explicas a cámara",
+   "cara": true,
+   "pantalla": "Título y tu cara.",
+   "voz": "[CARA] Así dejas de preocuparte por la infraestructura y te enfocas en tus apps."
+  },
+  {
+   "id": "flujo",
+   "type": "diagram",
+   "dur": 12,
+   "title": "Si un pod ==cae==, nace otro",
+   "title_px": 96,
+   "items": [
+    {
+     "k": "icon",
+     "name": "users",
+     "x": 500,
+     "y": 100,
+     "size": 150,
+     "color": "violet",
+     "t": 0.3
+    },
+    {
+     "k": "text",
+     "x": 500,
+     "y": 225,
+     "s": "USUARIOS",
+     "size": 34,
+     "poppins": true,
+     "t": 0.6
+    },
+    {
+     "k": "arrow",
+     "x1": 500,
+     "y1": 250,
+     "x2": 500,
+     "y2": 335,
+     "color": "pink",
+     "t": 1.2
+    },
+    {
+     "k": "box",
+     "x": 250,
+     "y": 345,
+     "w": 500,
+     "h": 140,
+     "label": "BALANCEADOR",
+     "color": "pink",
+     "solid": true,
+     "icon": "network",
+     "ipx": 52,
+     "lpx": 34,
+     "t": 1.8
+    },
+    {
+     "k": "arrow",
+     "x1": 500,
+     "y1": 490,
+     "x2": 200,
+     "y2": 655,
+     "color": "pink",
+     "t": 3.2
+    },
+    {
+     "k": "arrow",
+     "x1": 500,
+     "y1": 490,
+     "x2": 500,
+     "y2": 655,
+     "color": "pink",
+     "t": 3.4
+    },
+    {
+     "k": "arrow",
+     "x1": 500,
+     "y1": 490,
+     "x2": 800,
+     "y2": 655,
+     "color": "pink",
+     "t": 3.6
+    },
+    {
+     "k": "box",
+     "x": 90,
+     "y": 665,
+     "w": 220,
+     "h": 200,
+     "label": "POD",
+     "color": "violet",
+     "icon": "box",
+     "ipx": 64,
+     "lpx": 40,
+     "t": 4.0
+    },
+    {
+     "k": "box",
+     "x": 690,
+     "y": 665,
+     "w": 220,
+     "h": 200,
+     "label": "POD",
+     "color": "violet",
+     "icon": "box",
+     "ipx": 64,
+     "lpx": 40,
+     "t": 4.5
+    },
+    {
+     "k": "box",
+     "x": 390,
+     "y": 665,
+     "w": 220,
+     "h": 200,
+     "label": "POD",
+     "color": "pink",
+     "icon": "box",
+     "ipx": 64,
+     "lpx": 40,
+     "t": 4.9,
+     "cae": 6.6
+    },
+    {
+     "k": "box",
+     "x": 390,
+     "y": 665,
+     "w": 220,
+     "h": 200,
+     "label": "POD",
+     "color": "pink",
+     "solid": true,
+     "icon": "box",
+     "ipx": 64,
+     "lpx": 40,
+     "sub": "nuevo",
+     "t": 7.7
+    },
+    {
+     "k": "pill",
+     "x": 500,
+     "y": 950,
+     "s": "se auto-repara",
+     "size": 40,
+     "rot": -2,
+     "t": 9.0
+    }
+   ],
+   "pantalla": "Usuarios, balanceador y tres pods. Uno se cae y Kubernetes crea otro; aparece \"se auto-repara\".",
+   "voz": "Los usuarios entran por un balanceador de carga, que reparte el tráfico entre tus pods. Si uno se cae, Kubernetes crea otro, y todo sigue funcionando sin que nadie lo note.",
+   "escala": 1.12
+  },
+  {
+   "id": "pregunta",
+   "type": "cara",
+   "dur": 6,
+   "title": "¿Ya usas ==EKS==?",
+   "nota": "cierras a cámara",
+   "cara": true,
+   "pantalla": "Título y tu cara.",
+   "voz": "[CARA] ¿Ya usas EKS o todavía le tienes miedo a Kubernetes? Cuéntame en los comentarios."
+  },
+  {
+   "id": "cierre",
+   "type": "outro",
+   "dur": 6,
+   "cara": false,
+   "pantalla": "CARLICODE letra por letra y click en «sígueme».",
+   "voz": "Sígueme para más contenido tech."
+  }
+ ],
+ "portada": "Kubernetes en 1 minuto"
+}

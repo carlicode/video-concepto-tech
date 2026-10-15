@@ -1,0 +1,252 @@
+{
+ "titulo": "Novedades de Python 3.15 parte 1",
+ "slug": "novedades-python-3-15-parte-1",
+ "palabra_clave": "novedades de python 3.15",
+ "handle": "@carli.code",
+ "ritmo": 2.6,
+ "pausa": 0.5,
+ "escenas": [
+  {
+   "id": "gancho",
+   "type": "cover",
+   "solo_titulo": true,
+   "cara": true,
+   "dur": 5,
+   "title": "Python 3.15\n5 *novedades*",
+   "pantalla": "Solo el título, más arriba, con el cursor parpadeando. Debajo queda libre el espacio para tu cara.",
+   "voz": "[CARA] Ya salió Python 3.15, y estas cinco novedades sí las vas a usar.",
+   "pill": "las que sí vas a usar"
+  },
+  {
+   "id": "lazy-imports",
+   "type": "code_focus",
+   "title": "*lazy* imports",
+   "filename": "app.py",
+   "lines": [
+    "import sys",
+    "{p:lazy} import json",
+    "",
+    "print(\"json\" in sys.modules)",
+    "json.loads(\"{}\")",
+    "print(\"json\" in sys.modules)"
+   ],
+   "steps": [
+    {
+     "lines": [
+      2
+     ],
+     "peso": 2
+    },
+    {
+     "lines": [
+      4
+     ],
+     "peso": 2
+    },
+    {
+     "lines": [
+      5
+     ],
+     "peso": 2
+    },
+    {
+     "lines": [
+      6
+     ],
+     "peso": 2
+    }
+   ],
+   "salida": [
+    {
+     "t": "False",
+     "paso": 2
+    },
+    {
+     "t": "{p:True}",
+     "paso": 4
+    }
+   ],
+   "pantalla": "El código se escribe; se resalta cada línea y la salida va apareciendo: False y luego True.",
+   "voz": "La primera es lazy imports. Con lazy, Python no carga el módulo hasta que lo usas. Mira, antes da False, y después de usarlo da True. Ojo, porque solo funciona a nivel de módulo.",
+   "pill": "se carga al usarlo"
+  },
+  {
+   "id": "frozendict",
+   "type": "code_focus",
+   "title": "El *frozendict*",
+   "filename": "config.py",
+   "lines": [
+    "a = {p:frozendict}(x=1, y=2)",
+    "print(hash(a) == hash(frozendict(y=2, x=1)))",
+    "a[\"z\"] = 3"
+   ],
+   "steps": [
+    {
+     "lines": [
+      1
+     ],
+     "peso": 2
+    },
+    {
+     "lines": [
+      2
+     ],
+     "peso": 2.5
+    },
+    {
+     "lines": [
+      3
+     ],
+     "peso": 2.5
+    }
+   ],
+   "salida": [
+    {
+     "t": "{p:True}",
+     "paso": 2
+    },
+    {
+     "t": "{p:TypeError}: 'frozendict' object does not support item assignment",
+     "paso": 3
+    }
+   ],
+   "pantalla": "Código con tres pasos y la salida: True y después el TypeError al modificarlo.",
+   "voz": "La segunda es frozendict, un diccionario inmutable que ya viene en Python. Como nunca cambia, lo puedes hashear. Pero si intentas modificarlo, te da error.",
+   "pill": "dict inmutable"
+  },
+  {
+   "id": "unpacking",
+   "type": "code_focus",
+   "title": "Aplana con *asterisco*",
+   "filename": "listas.py",
+   "lines": [
+    "listas = [[1, 2], [3, 4], [5]]",
+    "",
+    "{m:# antes}",
+    "print([x for l in listas for x in l])",
+    "",
+    "{m:# ahora}",
+    "print([{p:*l} for l in listas])"
+   ],
+   "steps": [
+    {
+     "lines": [
+      3,
+      4
+     ],
+     "peso": 3
+    },
+    {
+     "lines": [
+      6,
+      7
+     ],
+     "peso": 3
+    }
+   ],
+   "salida": [
+    {
+     "t": "[1, 2, 3, 4, 5]",
+     "paso": 1
+    },
+    {
+     "t": "{p:[1, 2, 3, 4, 5]}",
+     "paso": 2
+    }
+   ],
+   "pantalla": "Antes (dos for) y ahora (asterisco), cada uno con su resultado: la misma lista plana.",
+   "voz": "La tercera te va a encantar. Tienes una lista de listas y quieres aplanarla. Antes eran dos for anidados, ahora basta un asterisco antes de la variable, y el resultado es el mismo.",
+   "pill": "una línea, sin dos for"
+  },
+  {
+   "id": "tachyon",
+   "type": "code_focus",
+   "title": "El profiler *Tachyon*",
+   "filename": "terminal",
+   "lines": [
+    "python -m profiling.sampling run app.py",
+    "",
+    "{m:# o a un proceso ya corriendo}",
+    "python -m profiling.sampling attach 12345"
+   ],
+   "steps": [
+    {
+     "lines": [
+      1
+     ],
+     "peso": 4
+    },
+    {
+     "lines": [
+      3,
+      4
+     ],
+     "peso": 4
+    }
+   ],
+   "salida": [
+    {
+     "t": "{m:nsamples    sample%  función}",
+     "paso": 1
+    },
+    {
+     "t": "{p:234/892      11.7%   handle_request}",
+     "paso": 1
+    },
+    {
+     "t": "156/156       7.8%   socket.recv",
+     "paso": 1
+    }
+   ],
+   "pantalla": "Comando para lanzar Tachyon y su tabla de resultados (resumida); luego el comando para conectarse a un proceso por PID.",
+   "voz": "La cuarta es Tachyon, un profiler de muestreo. Lo lanzas con un solo comando y te dice qué funciones consumen más tiempo. Y hasta se conecta a un proceso que ya está corriendo.",
+   "pill": "casi no frena tu código"
+  },
+  {
+   "id": "utf8",
+   "type": "code_focus",
+   "title": "UTF-8\n*por defecto*",
+   "filename": "leer.py",
+   "lines": [
+    "{m:# notas.txt está guardado en UTF-8}",
+    "f = open(\"notas.txt\")",
+    "print(f.read())"
+   ],
+   "steps": [
+    {
+     "lines": [
+      2
+     ],
+     "peso": 3
+    },
+    {
+     "lines": [
+      3
+     ],
+     "peso": 3
+    }
+   ],
+   "salida": [
+    {
+     "t": "{m:antes}  cafÃ©",
+     "paso": 2
+    },
+    {
+     "t": "{m:ahora}  {p:café}",
+     "paso": 2
+    }
+   ],
+   "pantalla": "open() sin indicar encoding y el resultado: antes salía mal en algunos sistemas, ahora sale bien.",
+   "voz": "Y la quinta es UTF-8 por defecto. Antes, abrir un archivo sin indicar el encoding dependía de tu sistema, y te podía salir café con caracteres raros. Ahora lee UTF-8 y sale bien. Y si lo necesitas, lo revierte PYTHONUTF8 igual a cero.",
+   "pill": "sin caracteres raros"
+  },
+  {
+   "id": "cierre",
+   "type": "outro",
+   "dur": 5.5,
+   "cara": false,
+   "pantalla": "CARLICODE se escribe letra por letra con brillo; debajo, un cursor hace click en «sígueme».",
+   "voz": "Sígueme para más contenido tech."
+  }
+ ]
+}
