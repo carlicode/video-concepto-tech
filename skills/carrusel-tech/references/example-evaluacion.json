@@ -1,0 +1,44 @@
+{
+  "title": "Cómo evaluar un sistema con LLM",
+  "handle": "@carli.code",
+  "slides": [
+    {"type": "cover", "kicker": "ia · evaluación", "title": "Cómo evaluar\nun sistema\ncon *LLM*", "lead": "del “se ve bien” a métricas reales"},
+    {"type": "cycle", "kicker": "el ciclo", "title": "Evaluar es un *ciclo*, no un examen",
+     "nodes": [
+       {"icon": "database", "label": "Dataset", "sub": "casos reales"},
+       {"icon": "play", "label": "Ejecutar", "sub": "tu sistema"},
+       {"icon": "gauge", "label": "Medir", "sub": "métricas"},
+       {"icon": "search", "label": "Analizar", "sub": "dónde falla"},
+       {"icon": "wrench", "label": "Mejorar", "sub": "ajustes"}],
+     "center": "Itera", "caption": "cada cambio reinicia el ciclo"},
+    {"type": "layers", "kicker": "métricas", "title": "Tres capas para *medir*",
+     "layers": [
+       {"icon": "user-check", "title": "Humano", "sub": "expertos y usuarios", "note": "decenas de casos"},
+       {"icon": "brain", "title": "Modelo juez", "sub": "LLM y similitud", "note": "cientos de casos"},
+       {"icon": "braces", "title": "Reglas", "sub": "JSON válido · regex · longitud", "note": "miles de casos"}],
+     "axis": ["más confiable, más caro", "más barato, más casos"], "caption": "empieza por abajo: reglas primero"},
+    {"type": "flow", "kicker": "juez llm", "title": "Un modelo que *califica* a otro",
+     "inputs": [{"icon": "message-square", "label": "Pregunta"}, {"icon": "file-text", "label": "Respuesta"}, {"icon": "clipboard-check", "label": "Rúbrica"}],
+     "processor": {"icon": "brain", "title": "Juez LLM", "sub": "puntúa con la rúbrica"},
+     "result": {"label": "resultado", "value": "4/5", "of": 5, "filled": 4, "quote": "Fiel al contexto, pero no cita la fuente."},
+     "chips_title": "sesgos a controlar",
+     "chips": [{"icon": "arrow-up-down", "label": "Posición", "sub": "prefiere la 1.ª"}, {"icon": "align-left", "label": "Verbosidad", "sub": "premia lo largo"}, {"icon": "repeat", "label": "Autopreferencia", "sub": "favorece su estilo"}]},
+    {"type": "triangle", "kicker": "rag", "title": "El triángulo de *evaluación*",
+     "nodes": [{"icon": "message-square", "label": "Pregunta"}, {"icon": "database", "label": "Contexto"}, {"icon": "sparkles", "label": "Respuesta"}],
+     "edges": {"left": ["Relevancia", "del contexto"], "bottom": ["Fidelidad", "groundedness"], "right": ["Relevancia", "de la respuesta"]},
+     "questions": [{"label": "Relevancia del contexto", "text": "¿recuperó lo correcto?"}, {"label": "Fidelidad", "text": "¿se inventó algo?"}, {"label": "Relevancia de la respuesta", "text": "¿responde lo preguntado?"}]},
+    {"type": "bars", "kicker": "regresiones", "title": "Compara versiones y *detecta fallos*",
+     "legend": ["v1", "v2"],
+     "categories": [{"label": "Fidelidad", "a": 72, "b": 89}, {"label": "Relevancia", "a": 81, "b": 86}, {"label": "Formato", "a": 90, "b": 98}, {"label": "Seguridad", "a": 96, "b": 92}],
+     "threshold": {"value": 95, "label": "umbral de seguridad: 95"}, "highlight": 3,
+     "callout": {"icon": "triangle-alert", "line1": "v2 mejora 3 de 4 métricas,", "line2": "pero rompe seguridad (96 → 92)", "note": "no se publica hasta corregirlo"},
+     "example_data": true},
+    {"type": "list", "kicker": "checklist", "title": "Tu checklist de *evaluación*",
+     "items": [
+       {"icon": "database", "name": "Dataset dorado", "desc": "casos reales y difíciles"},
+       {"icon": "layers", "name": "Métricas por capas", "desc": "reglas, juez LLM y humanos"},
+       {"icon": "scale", "name": "Juez calibrado", "desc": "contrástalo con humanos"},
+       {"icon": "git-compare", "name": "Comparar versiones", "desc": "cada cambio contra el anterior"},
+       {"icon": "activity", "name": "Monitoreo en producción", "desc": "trazas y alertas de calidad"}]}
+  ]
+}
